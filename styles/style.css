@@ -1,8 +1,231 @@
-/*
-Colors:
+/* RESET */
 
-Text: 1A1A1A
-Green: #00B172
-White: #FFF
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-*/
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* MY STYLING - intención 'mobile first' */
+
+:root {
+  /* font sizes */
+  --fs-body: 1.25rem;
+  --fs-large: 1.5rem;
+  --fs-x-large: 1.875rem;
+  --fs-huge: 3.75rem;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: var(--fs-huge);
+  line-height: 1;
+  padding-bottom: 2rem;
+}
+
+h2 {
+  font-size: var(--fs-x-large);
+  width: fit-content;
+  border-bottom-width: 7px;
+  border-bottom-style: solid;
+}
+
+h3 {
+  font-size: var(--fs-large);
+  padding-bottom: 1.5rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 2rem 0;
+}
+
+p {
+  padding-bottom: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #00b172;
+}
+
+header {
+  background-image: url("../images/landing.jpg");
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+  color: white;
+
+  /* centrar título verticalmente en el encabezado */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* compensar espacio de fixed nav */
+  margin-top: 3rem;
+}
+
+header p {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+
+  padding: 0.75rem 2rem;
+
+  background-color: white;
+  border-bottom: 1px gray solid;
+}
+
+/* centrar logo y ocultar links de navegación */
+nav img {
+  height: 44px;
+  margin: 0 auto;
+}
+
+nav ul {
+  display: none;
+}
+
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 0 1.5rem;
+}
+
+.features h2 {
+  border-bottom-color: #00b172;
+
+  /* centrar debido a 'width: fit-content' a pesar de 'text-align: center'  */
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.features img {
+  height: 142px;
+  margin: 0 auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.features h3 {
+  color: #00b172;
+}
+
+.actions {
+  text-align: left;
+  background-color: #00b172;
+  color: white;
+  padding-bottom: 4rem;
+}
+
+.actions h2 {
+  border-bottom-color: white;
+}
+
+.white-logo {
+  width: 124px;
+  padding-bottom: 4rem;
+  margin: 0 auto;
+}
+
+/* Añadir complejidad para resoluciones mayores */
+
+@media only screen and (min-width: 480px) {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav img {
+    margin: 0;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 2rem;
+    padding: 0.75rem 0;
+  }
+
+  /* limitar largo de línea en la intro para legibilidad */
+  header p {
+    max-width: 50ch;
+    margin: 0 auto;
+  }
+
+  /* mostrar características en 3 columnas */
+  .features ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4em;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4em;
+
+    padding-right: 5rem;
+    padding-left: 5rem;
+
+    /* para posicionar el white logo con absolute */
+    position: relative;
+  }
+
+  .actions > div,
+  .app-sample {
+    width: 40%;
+  }
+
+  .actions p {
+    max-width: 32ch;
+  }
+
+  .actions .white-logo {
+    position: absolute;
+    top: calc(50% - 72px);
+    left: calc(50% - 72px);
+  }
+}
